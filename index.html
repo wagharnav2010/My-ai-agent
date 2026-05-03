@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Manus-Style AI Agent</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app">
+    <aside class="panel">
+      <h1>Agent Console</h1>
+      <p class="muted">Manus-style planner using Google Gemini (free tier model).</p>
+      <label for="apiKey">Google API Key</label>
+      <input id="apiKey" type="password" placeholder="Paste your API key" autocomplete="off" />
+      <label for="model">Model</label>
+      <select id="model">
+        <option value="gemini-2.0-flash">gemini-2.0-flash (fast/free)</option>
+        <option value="gemini-1.5-flash">gemini-1.5-flash</option>
+      </select>
+      <button id="saveKeyBtn">Save Locally</button>
+      <p class="muted tiny">Stored in localStorage on your browser only.</p>
+    </aside>
+
+    <main class="chat-wrap">
+      <header class="chat-header">
+        <h2>Task Agent</h2>
+        <span id="status" class="status idle">Idle</span>
+      </header>
+
+      <div id="chat" class="chat" aria-live="polite"></div>
+
+      <form id="chatForm" class="composer">
+        <input id="taskInput" type="text" placeholder="Type a task for the agent..." required />
+        <button type="submit">Run Task</button>
+      </form>
+    </main>
+  </div>
+
+  <template id="messageTemplate">
+    <div class="msg-row">
+      <div class="msg">
+        <div class="role"></div>
+        <div class="content"></div>
+      </div>
+    </div>
+  </template>
+
+  <script src="app.js"></script>
+</body>
+</html>
